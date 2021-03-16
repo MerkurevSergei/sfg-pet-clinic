@@ -51,7 +51,18 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<goals>install</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
+	<scm>
+		<connection>scm:git:git@github.com:MerkurevSergei/sfg-pet-clinic.git</connection>
+	</scm>
 </project>
