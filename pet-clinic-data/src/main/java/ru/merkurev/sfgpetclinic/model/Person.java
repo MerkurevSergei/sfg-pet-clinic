@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Person
+ * {@link Person} business entity.
  *
  * @author Merkurev Sergei
  * @version 0.1

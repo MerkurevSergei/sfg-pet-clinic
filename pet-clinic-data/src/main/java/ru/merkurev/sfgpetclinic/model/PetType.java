@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * PetType
+ * {@link PetType} business entity.
  *
  * @author Merkurev Sergei
  * @version 0.1

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Pet
+ * {@link Pet} business entity.
  *
  * @author Merkurev Sergei
  * @version 0.1

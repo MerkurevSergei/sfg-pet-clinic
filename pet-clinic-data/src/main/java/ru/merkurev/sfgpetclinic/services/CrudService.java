@@ -9,7 +9,7 @@ import java.util.Optional;
  * @version 0.2
  * @since 0.2
  */
-public interface CrudService<T, ID> {
+public interface CrudService<T, IDT> {
 
   /**
    * Saves a given entity. Use the returned instance for further operations
@@ -32,7 +32,7 @@ public interface CrudService<T, ID> {
    * @throws IllegalArgumentException
    *     if {@literal id} is {@literal null}.
    */
-  Optional<T> findById(ID id);
+  Optional<T> findById(IDT id);
 
   /**
    * Returns all instances of the type.
@@ -49,7 +49,7 @@ public interface CrudService<T, ID> {
    * @throws IllegalArgumentException
    *     in case the given {@literal id} is {@literal null}
    */
-  void deleteById(ID id);
+  void deleteById(IDT id);
 
   /**
    * Deletes a given entity.
