@@ -14,5 +14,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Person extends BaseEntity {
   private String firstName;
-  private String secondName;
+  private String lastName;
 }
