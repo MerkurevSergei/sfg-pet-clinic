@@ -1,6 +1,9 @@
 package ru.merkurev.sfgpetclinic.services.map;
 
+import org.springframework.stereotype.Service;
+
 import ru.merkurev.sfgpetclinic.model.Owner;
+import ru.merkurev.sfgpetclinic.services.OwnerService;
 
 /**
  * OwnerService implement AbstractMapService.
@@ -9,7 +12,8 @@ import ru.merkurev.sfgpetclinic.model.Owner;
  * @version 0.1
  * @since 0.1
  */
-public class OwnerService extends AbstractMapService<Owner, Long> {
+@Service
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
   @Override
   public <S extends Owner> S save(S entity) {
     return super.save(entity.getId(), entity);
