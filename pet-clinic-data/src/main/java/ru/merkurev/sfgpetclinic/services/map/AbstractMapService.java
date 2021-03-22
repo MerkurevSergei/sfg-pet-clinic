@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import ru.merkurev.sfgpetclinic.model.BaseEntity;
 import ru.merkurev.sfgpetclinic.services.CrudService;
 
 /**
@@ -17,12 +18,18 @@ import ru.merkurev.sfgpetclinic.services.CrudService;
  * @version 0.1
  * @since 0.1
  */
-public abstract class AbstractMapService<T, IDT extends Number> implements CrudService<T, IDT> {
+public abstract class AbstractMapService<T extends BaseEntity, IDT extends Long>
+    implements CrudService<T, IDT> {
 
-  protected Map<IDT, T> map = new HashMap<>();
+  protected Map<Long, T> map = new HashMap<>();
 
-  protected <S extends T> S save(IDT id, S entity) {
-    map.put(id, entity);
+  @Override
+  public <S extends T> S save(S entity) {
+    entity = Optional.ofNullable(entity)
+                     .orElseThrow(() -> new IllegalArgumentException("Entity cannot be null"));
+    Long nextId = map.keySet().stream().mapToLong(v -> v).max().orElse(0) + 1;
+    entity.setId(nextId);
+    map.put(nextId, entity);
     return entity;
   }
 

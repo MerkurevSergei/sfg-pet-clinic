@@ -14,8 +14,4 @@ import ru.merkurev.sfgpetclinic.services.OwnerService;
  */
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
-  @Override
-  public <S extends Owner> S save(S entity) {
-    return super.save(entity.getId(), entity);
-  }
 }

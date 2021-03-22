@@ -14,8 +14,4 @@ import ru.merkurev.sfgpetclinic.services.PetService;
  */
 @Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
-  @Override
-  public <S extends Pet> S save(S entity) {
-    return super.save(entity.getId(), entity);
-  }
 }
