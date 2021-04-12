@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import ru.merkurev.sfgpetclinic.model.Owner;
+import ru.merkurev.sfgpetclinic.model.PetType;
 import ru.merkurev.sfgpetclinic.model.Vet;
 import ru.merkurev.sfgpetclinic.services.OwnerService;
+import ru.merkurev.sfgpetclinic.services.PetTypeService;
 import ru.merkurev.sfgpetclinic.services.VetService;
 
 /**
@@ -20,15 +22,36 @@ public class DataLoader implements CommandLineRunner {
 
   private final OwnerService ownerService;
   private final VetService vetService;
+  private final PetTypeService petTypeService;
 
-  public DataLoader(OwnerService ownerService, VetService vetService) {
+  /**
+   * DataLoader constructor.
+   *
+   * @param ownerService
+   *     service
+   * @param vetService
+   *     service
+   * @param petTypeService
+   *     service
+   */
+  public DataLoader(OwnerService ownerService, VetService vetService,
+      PetTypeService petTypeService) {
     this.ownerService = ownerService;
     this.vetService = vetService;
+    this.petTypeService = petTypeService;
   }
 
   @Override
   public void run(String... args) {
 
+    PetType petTypeDog = new PetType();
+    petTypeDog.setName("Dog");
+    petTypeService.save(petTypeDog);
+
+    PetType petTypeCat = new PetType();
+    petTypeCat.setName("Cat");
+    petTypeService.save(petTypeCat);
+    
     Owner owner1 = new Owner();
     owner1.setFirstName("Ivan");
     owner1.setLastName("Ivanov");
