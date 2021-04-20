@@ -15,6 +15,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Pet extends BaseEntity {
+  private String name;
   private PetType petType;
   private Owner owner;
   private LocalDate birthDate;

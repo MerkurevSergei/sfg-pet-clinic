@@ -2,6 +2,7 @@ package ru.merkurev.sfgpetclinic.services.map;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import ru.merkurev.sfgpetclinic.model.BaseEntity;
@@ -28,6 +29,7 @@ public abstract class AbstractMapService<T extends BaseEntity, IDT extends Long>
     entity = Optional.ofNullable(entity)
                      .orElseThrow(() -> new IllegalArgumentException("Entity cannot be null"));
     Long nextId = map.keySet().stream().mapToLong(v -> v).max().orElse(0) + 1;
+    nextId = Objects.isNull(entity.getId()) ? nextId : entity.getId();
     entity.setId(nextId);
     map.put(nextId, entity);
     return entity;

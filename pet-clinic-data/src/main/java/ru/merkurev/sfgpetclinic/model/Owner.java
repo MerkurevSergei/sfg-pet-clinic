@@ -4,6 +4,7 @@ import java.util.Set;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * {@link Owner} business entity.
@@ -18,5 +19,6 @@ public class Owner extends Person {
   private String address;
   private String city;
   private String telephone;
+  @ToString.Exclude
   Set<Pet> pets;
 }
