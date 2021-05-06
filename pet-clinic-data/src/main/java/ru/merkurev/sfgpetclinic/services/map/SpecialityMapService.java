@@ -3,7 +3,7 @@ package ru.merkurev.sfgpetclinic.services.map;
 import org.springframework.stereotype.Service;
 
 import ru.merkurev.sfgpetclinic.model.Speciality;
-import ru.merkurev.sfgpetclinic.services.SpecialtyService;
+import ru.merkurev.sfgpetclinic.services.SpecialityService;
 
 /**
  * SpecialityMapService implement AbstractMapService.
@@ -14,5 +14,5 @@ import ru.merkurev.sfgpetclinic.services.SpecialtyService;
  */
 @Service
 public class SpecialityMapService extends AbstractMapService<Speciality, Long>
-    implements SpecialtyService {
+    implements SpecialityService {
 }
