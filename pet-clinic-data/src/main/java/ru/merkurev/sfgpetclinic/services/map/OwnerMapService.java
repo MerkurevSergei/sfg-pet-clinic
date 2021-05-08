@@ -24,7 +24,7 @@ import ru.merkurev.sfgpetclinic.services.PetTypeService;
  */
 @Service
 @RequiredArgsConstructor
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
   private final PetTypeService petTypeService;
   private final PetService petService;
 
@@ -41,8 +41,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
       if (Objects.isNull(pet)) {
         continue;
       }
-      PetType petType =  Optional.ofNullable(pet.getPetType())
-                                 .orElseThrow(() -> new RuntimeException("Pet Type is required"));
+      PetType petType = Optional.ofNullable(pet.getPetType())
+                                .orElseThrow(() -> new RuntimeException("Pet Type is required"));
       petService.save(pet);
       petTypeService.save(petType);
     }
