@@ -12,9 +12,11 @@ import ru.merkurev.sfgpetclinic.model.Pet;
 import ru.merkurev.sfgpetclinic.model.PetType;
 import ru.merkurev.sfgpetclinic.model.Speciality;
 import ru.merkurev.sfgpetclinic.model.Vet;
+import ru.merkurev.sfgpetclinic.model.Visit;
 import ru.merkurev.sfgpetclinic.services.OwnerService;
 import ru.merkurev.sfgpetclinic.services.PetTypeService;
 import ru.merkurev.sfgpetclinic.services.VetService;
+import ru.merkurev.sfgpetclinic.services.VisitService;
 import ru.merkurev.sfgpetclinic.services.map.SpecialityMapService;
 
 /**
@@ -31,6 +33,8 @@ public class DataLoader implements CommandLineRunner {
   private final VetService vetService;
   private final PetTypeService petTypeService;
   private final SpecialityMapService specialityMapService;
+  private final VisitService visitService;
+  
 
   /**
    * DataLoader constructor.
@@ -43,14 +47,18 @@ public class DataLoader implements CommandLineRunner {
    *     service
    * @param specialityMapService
    *     service
+   * @param visitService
+   *     service
    */
   public DataLoader(OwnerService ownerService, VetService vetService,
       PetTypeService petTypeService,
-      SpecialityMapService specialityMapService) {
+      SpecialityMapService specialityMapService,
+      VisitService visitService) {
     this.ownerService = ownerService;
     this.vetService = vetService;
     this.petTypeService = petTypeService;
     this.specialityMapService = specialityMapService;
+    this.visitService = visitService;
   }
 
   @Override
@@ -100,6 +108,13 @@ public class DataLoader implements CommandLineRunner {
     owner2.setTelephone("+7(124)152-22-33");
     ownerService.save(owner2);
 
+    Visit petVisit = new Visit();
+    petVisit.setPet(pet1);
+    petVisit.setDate(LocalDate.now());
+    petVisit.setDescription("Sneezy Kitty");
+    
+    visitService.save(petVisit);
+    
     Vet vet1 = new Vet();
     vet1.setFirstName("Nika");
     vet1.setLastName("Nikola");
