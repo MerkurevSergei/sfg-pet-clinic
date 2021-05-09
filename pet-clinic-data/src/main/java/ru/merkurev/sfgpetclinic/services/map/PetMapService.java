@@ -1,7 +1,5 @@
 package ru.merkurev.sfgpetclinic.services.map;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -18,13 +16,5 @@ import ru.merkurev.sfgpetclinic.services.PetService;
 @Service
 @RequiredArgsConstructor
 public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
-
-  private final OwnerMapService ownerMapService;
-
-  @Override
-  public <S extends Pet> S save(S entity) {
-    Optional.ofNullable(entity).orElseThrow(() -> new RuntimeException("Owner cannot be null"));
-    ownerMapService.save(entity.getOwner());
-    return super.save(entity);
-  }
 }
+ 
