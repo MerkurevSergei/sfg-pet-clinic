@@ -2,6 +2,7 @@ package ru.merkurev.sfgpetclinic.services.map;
 
 import java.util.Optional;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import ru.merkurev.sfgpetclinic.services.VisitService;
  */
 @Service
 @RequiredArgsConstructor
+@Profile({"default", "mapdata"})
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
   private final PetMapService petMapService;

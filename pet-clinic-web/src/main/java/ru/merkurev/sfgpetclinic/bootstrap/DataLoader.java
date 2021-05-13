@@ -15,9 +15,9 @@ import ru.merkurev.sfgpetclinic.model.Vet;
 import ru.merkurev.sfgpetclinic.model.Visit;
 import ru.merkurev.sfgpetclinic.services.OwnerService;
 import ru.merkurev.sfgpetclinic.services.PetTypeService;
+import ru.merkurev.sfgpetclinic.services.SpecialityService;
 import ru.merkurev.sfgpetclinic.services.VetService;
 import ru.merkurev.sfgpetclinic.services.VisitService;
-import ru.merkurev.sfgpetclinic.services.map.SpecialityMapService;
 
 /**
  * Loads the initial values to the storage.
@@ -32,9 +32,8 @@ public class DataLoader implements CommandLineRunner {
   private final OwnerService ownerService;
   private final VetService vetService;
   private final PetTypeService petTypeService;
-  private final SpecialityMapService specialityMapService;
+  private final SpecialityService specialityService;
   private final VisitService visitService;
-  
 
   /**
    * DataLoader constructor.
@@ -45,19 +44,17 @@ public class DataLoader implements CommandLineRunner {
    *     service
    * @param petTypeService
    *     service
-   * @param specialityMapService
+   * @param specialityService
    *     service
    * @param visitService
    *     service
    */
-  public DataLoader(OwnerService ownerService, VetService vetService,
-      PetTypeService petTypeService,
-      SpecialityMapService specialityMapService,
-      VisitService visitService) {
+  public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+      SpecialityService specialityService, VisitService visitService) {
     this.ownerService = ownerService;
     this.vetService = vetService;
     this.petTypeService = petTypeService;
-    this.specialityMapService = specialityMapService;
+    this.specialityService = specialityService;
     this.visitService = visitService;
   }
 
@@ -81,9 +78,9 @@ public class DataLoader implements CommandLineRunner {
     surgery.setDescription("Surgery");
     Speciality dentistry = new Speciality();
     dentistry.setDescription("Dentistry");
-    specialityMapService.save(radiology);
-    specialityMapService.save(surgery);
-    specialityMapService.save(dentistry);
+    specialityService.save(radiology);
+    specialityService.save(surgery);
+    specialityService.save(dentistry);
 
     Owner owner1 = new Owner();
     owner1.setFirstName("Ivan");
@@ -112,9 +109,9 @@ public class DataLoader implements CommandLineRunner {
     petVisit.setPet(pet1);
     petVisit.setDate(LocalDate.now());
     petVisit.setDescription("Sneezy Kitty");
-    
+
     visitService.save(petVisit);
-    
+
     Vet vet1 = new Vet();
     vet1.setFirstName("Nika");
     vet1.setLastName("Nikola");

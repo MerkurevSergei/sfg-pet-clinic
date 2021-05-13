@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import ru.merkurev.sfgpetclinic.services.PetTypeService;
  */
 @Service
 @RequiredArgsConstructor
+@Profile({"default", "mapdata"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
   private final PetTypeService petTypeService;
   private final PetService petService;
